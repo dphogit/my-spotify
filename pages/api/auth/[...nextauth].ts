@@ -1,5 +1,6 @@
 import NextAuth, { NextAuthOptions } from 'next-auth';
 import SpotifyProvider from 'next-auth/providers/spotify';
+import { PageRoutes } from '../../../config/constants';
 
 const spotifyClientId = process.env.SPOTIFY_CLIENT_ID;
 const spotifyClientSecret = process.env.SPOTIFY_CLIENT_SECRET;
@@ -9,6 +10,9 @@ if (!spotifyClientId || !spotifyClientSecret) {
 }
 
 export const authOptions: NextAuthOptions = {
+  pages: {
+    signIn: PageRoutes.Home,
+  },
   providers: [
     SpotifyProvider({
       clientId: spotifyClientId,
