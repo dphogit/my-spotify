@@ -2,6 +2,7 @@ import { Box, Button, Text, Title } from '@mantine/core';
 import { signOut, useSession } from 'next-auth/react';
 import { useRouter } from 'next/router';
 import { PageRoutes } from 'config/constants';
+import { AppLayout } from '../components';
 
 const useLogout = () => {
   const router = useRouter();
@@ -18,7 +19,7 @@ const ProfilePage = () => {
   const logout = useLogout();
 
   return (
-    <Box p="xl">
+    <AppLayout>
       {status === 'loading' && <Title>Loading Profile Page...</Title>}
       {session && (
         <>
@@ -29,7 +30,7 @@ const ProfilePage = () => {
           </Button>
         </>
       )}
-    </Box>
+    </AppLayout>
   );
 };
 

@@ -65,6 +65,9 @@ const ThemeProvider = ({ children, colorScheme, toggleColorScheme }: ThemeProvid
           primaryShade: 6,
           fontFamily,
           headings: { fontFamily, fontWeight: 800 },
+          globalStyles: (theme) => ({
+            body: { backgroundColor: theme.colors.dark[8] },
+          }),
           components: {
             Title: {
               styles: {
