@@ -9,7 +9,18 @@ if (!spotifyClientId || !spotifyClientSecret) {
 }
 
 export const authOptions: NextAuthOptions = {
-  providers: [SpotifyProvider({ clientId: spotifyClientId, clientSecret: spotifyClientSecret })],
+  providers: [
+    SpotifyProvider({
+      clientId: spotifyClientId,
+      clientSecret: spotifyClientSecret,
+      authorization: {
+        url: 'https://accounts.spotify.com/authorize',
+        params: {
+          scope: 'user-read-private user-read-email user-top-read',
+        },
+      },
+    }),
+  ],
 };
 
 export default NextAuth(authOptions);
