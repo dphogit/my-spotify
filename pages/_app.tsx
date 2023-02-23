@@ -4,6 +4,7 @@ import { getCookie, setCookie } from 'cookies-next';
 import Head from 'next/head';
 import { ColorScheme } from '@mantine/core';
 import { NotificationsProvider } from '@mantine/notifications';
+import { SessionProvider } from 'next-auth/react';
 import { ThemeProvider } from '../providers';
 
 export default function App(props: AppProps & { colorScheme: ColorScheme }) {
@@ -23,12 +24,13 @@ export default function App(props: AppProps & { colorScheme: ColorScheme }) {
         <meta name="viewport" content="minimum-scale=1, initial-scale=1, width=device-width" />
         <link rel="shortcut icon" href="/favicon.svg" />
       </Head>
-
-      <ThemeProvider colorScheme={colorScheme} toggleColorScheme={toggleColorScheme}>
-        <NotificationsProvider>
-          <Component {...pageProps} />
-        </NotificationsProvider>
-      </ThemeProvider>
+      <SessionProvider session={pageProps.session}>
+        <ThemeProvider colorScheme={colorScheme} toggleColorScheme={toggleColorScheme}>
+          <NotificationsProvider>
+            <Component {...pageProps} />
+          </NotificationsProvider>
+        </ThemeProvider>
+      </SessionProvider>
     </>
   );
 }

@@ -1,5 +1,5 @@
 import { Box, Button, Text, Title } from '@mantine/core';
-import { signOut } from 'next-auth/react';
+import { signOut, useSession } from 'next-auth/react';
 import { useRouter } from 'next/router';
 import { PageRoutes } from 'config/constants';
 
@@ -13,15 +13,22 @@ const useLogout = () => {
 };
 
 const ProfilePage = () => {
+  const { data: session, status } = useSession();
+
   const logout = useLogout();
 
   return (
     <Box p="xl">
-      <Title mb="xs">Profile Page</Title>
-      <Text mb="md">This is a protected route. You should land here after signing in.</Text>
-      <Button onClick={logout} size="md">
-        Logout
-      </Button>
+      {status === 'loading' && <Title>Loading Profile Page...</Title>}
+      {session && (
+        <>
+          <Title mb="xs">Welcome {session.user?.name}!</Title>
+          <Text mb="md">This is a protected route. You should land here after signing in.</Text>
+          <Button onClick={logout} size="md">
+            Logout
+          </Button>
+        </>
+      )}
     </Box>
   );
 };
