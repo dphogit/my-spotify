@@ -72,7 +72,6 @@ const ThemeProvider = ({ children, colorScheme, toggleColorScheme }: ThemeProvid
               },
             },
           },
-          black: '#191414',
           colors: {
             spotify: [
               '#b4e4bb',
