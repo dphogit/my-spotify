@@ -7,4 +7,14 @@ module.exports = withBundleAnalyzer({
   eslint: {
     ignoreDuringBuilds: true,
   },
+  images: {
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: 'scontent.fmaa10-1.fna.fbcdn.net',
+        port: '',
+        pathname: '**',
+      },
+    ],
+  },
 });

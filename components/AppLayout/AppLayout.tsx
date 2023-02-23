@@ -1,5 +1,6 @@
 import React from 'react';
 import { AppShell, AppShellProps, Group, Header, Navbar, Title } from '@mantine/core';
+import { UserMenu } from './UserMenu';
 
 interface AppLayoutProps {
   children: React.ReactNode;
@@ -13,12 +14,14 @@ const AppLayout = ({ children, ...props }: AppLayoutProps & AppShellProps) => {
         root: { backgroundColor: theme.colors.dark[8] },
       })}
       header={
-        <Header height={60} py="xs" px="xl">
+        <Header height={72} py="xs" px="xl">
           <Group h="100%" position="apart">
             <Title order={2} size="h3">
               Visualize My Spotify
             </Title>
-            <Group>User Menu</Group>
+            <Group>
+              <UserMenu />
+            </Group>
           </Group>
         </Header>
       }
