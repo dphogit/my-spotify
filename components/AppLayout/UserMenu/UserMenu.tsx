@@ -3,11 +3,14 @@ import { Avatar, Box, Group, Menu, Skeleton, Text, UnstyledButton } from '@manti
 import Image from 'next/image';
 import { useSession } from 'next-auth/react';
 import { IconLogout, IconUserCircle } from '@tabler/icons';
+import { useLogout } from 'hooks';
 
 const AVATAR_SIZE = 40;
 
 const UserMenu = () => {
   const { data: session, status } = useSession();
+
+  const logout = useLogout();
 
   const renderMenuTarget = (): React.ReactNode => {
     if (status === 'loading') {
@@ -29,7 +32,6 @@ const UserMenu = () => {
             height={AVATAR_SIZE}
             style={{
               borderRadius: '50%',
-              cursor: 'pointer',
             }}
           />
           <Box>
@@ -44,7 +46,7 @@ const UserMenu = () => {
 
     return (
       <>
-        <Avatar size={AVATAR_SIZE} radius="xl" sx={{ cursor: 'pointer' }}>
+        <Avatar size={AVATAR_SIZE} radius="xl">
           {session?.user?.name?.charAt(0)}
         </Avatar>
         <Text>{session?.user?.name}</Text>
@@ -55,13 +57,15 @@ const UserMenu = () => {
   return (
     <Menu shadow="lg" disabled={status === 'loading'} position="bottom-end" width={200}>
       <Menu.Target>
-        <UnstyledButton sx={{ '&:hover': { opacity: 0.9 } }}>
+        <UnstyledButton title="Toggle Dropdown Menu" sx={{ '&:hover': { opacity: 0.9 } }}>
           <Group spacing="xs">{renderMenuTarget()}</Group>
         </UnstyledButton>
       </Menu.Target>
       <Menu.Dropdown>
         <Menu.Item icon={<IconUserCircle size={20} />}>Profile</Menu.Item>
-        <Menu.Item icon={<IconLogout size={20} />}>Sign out</Menu.Item>
+        <Menu.Item icon={<IconLogout size={20} />} onClick={logout}>
+          Logout
+        </Menu.Item>
       </Menu.Dropdown>
     </Menu>
   );

@@ -1,17 +1,7 @@
-import { Box, Button, Text, Title } from '@mantine/core';
-import { signOut, useSession } from 'next-auth/react';
-import { useRouter } from 'next/router';
-import { PageRoutes } from 'config/constants';
-import { AppLayout } from '../components';
-
-const useLogout = () => {
-  const router = useRouter();
-
-  return async () => {
-    const { url } = await signOut({ redirect: false, callbackUrl: PageRoutes.Home });
-    await router.push(url);
-  };
-};
+import { Button, Text, Title } from '@mantine/core';
+import { useSession } from 'next-auth/react';
+import { AppLayout } from 'components';
+import { useLogout } from 'hooks';
 
 const ProfilePage = () => {
   const { data: session, status } = useSession();
