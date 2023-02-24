@@ -5,7 +5,7 @@ import { ProfileCard } from 'features/profile';
 const ProfilePage = () => {
   return (
     <AppLayout>
-      <Container size="lg">
+      <Container size="lg" mt="xl">
         <Box mb="xl">
           <ProfileCard />
         </Box>

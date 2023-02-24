@@ -35,7 +35,8 @@ export const authOptions: NextAuthOptions = {
       authorization: {
         url: 'https://accounts.spotify.com/authorize',
         params: {
-          scope: 'user-read-private user-read-email user-top-read',
+          scope:
+            'user-read-private user-read-email user-top-read user-follow-read playlist-read-private',
         },
       },
     }),

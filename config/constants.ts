@@ -4,5 +4,7 @@ export const enum PageRoutes {
 }
 
 export const enum SWRCacheKeys {
+  FollowedArtists = 'followed-artists',
   Me = 'me',
+  MyPlaylists = 'my-playlists',
 }
