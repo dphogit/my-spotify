@@ -1,6 +1,7 @@
-import { Avatar, Badge, Box, Group, Paper, Skeleton, Stack, Text, Title } from '@mantine/core';
+import { Avatar, Badge, Box, Group, Paper, Skeleton, Stack, Title } from '@mantine/core';
 import Image from 'next/image';
 import { useGetFollowedArtists, useGetMe, useGetMyPlaylists } from '../../hooks';
+import { Stat } from '../../../../components';
 
 const IMG_SIZE = 180;
 
@@ -51,36 +52,11 @@ const ProfileCard = () => {
                 )}
               </Box>
               <Group mt="xs" spacing="xl">
-                {profile.followers && (
-                  <Box>
-                    <Text ta="center" fw={700} color="spotify.7">
-                      {profile.followers.total}
-                    </Text>
-                    <Text color="dimmed" fw={600} size="xs">
-                      FOLLOWERS
-                    </Text>
-                  </Box>
+                {profile.followers && <Stat label="Followers" value={profile.followers.total} />}
+                {followedResponse?.artists.total !== undefined && (
+                  <Stat label="Following" value={followedResponse.artists.total} />
                 )}
-                {followedResponse?.artists && (
-                  <Box>
-                    <Text ta="center" fw={700} color="spotify.7">
-                      {followedResponse.artists.total}
-                    </Text>
-                    <Text color="dimmed" fw={600} size="xs">
-                      FOLLOWING
-                    </Text>
-                  </Box>
-                )}
-                {playlistsResponse && (
-                  <Box>
-                    <Text ta="center" fw={700} color="spotify.7">
-                      {playlistsResponse.total}
-                    </Text>
-                    <Text color="dimmed" fw={600} size="xs">
-                      PLAYLISTS
-                    </Text>
-                  </Box>
-                )}
+                {playlistsResponse && <Stat label="Playlists" value={playlistsResponse.total} />}
               </Group>
             </Stack>
           )
