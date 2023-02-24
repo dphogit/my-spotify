@@ -14,7 +14,8 @@ const ProfilePage = () => {
       {session && (
         <>
           <Title mb="xs">Welcome {session.user?.name}!</Title>
-          <Text mb="md">This is a protected route. You should land here after signing in.</Text>
+          <Text mb="md">Your user id: {session.user?.id}</Text>
+          <Text mb="md">Your access token: {session.accessToken}</Text>
           <Button onClick={logout} size="md">
             Logout
           </Button>
