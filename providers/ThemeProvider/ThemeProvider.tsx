@@ -62,7 +62,6 @@ const ThemeProvider = ({ children, colorScheme, toggleColorScheme }: ThemeProvid
       <MantineProvider
         theme={{
           colorScheme,
-          primaryShade: 6,
           fontFamily,
           headings: { fontFamily, fontWeight: 800 },
           globalStyles: (theme) => ({
@@ -89,6 +88,7 @@ const ThemeProvider = ({ children, colorScheme, toggleColorScheme }: ThemeProvid
               '#0e7131',
             ],
           },
+          primaryShade: 6,
           primaryColor: 'spotify',
         }}
         withGlobalStyles
