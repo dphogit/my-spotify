@@ -1,26 +1,23 @@
-import { Button, Text, Title } from '@mantine/core';
-import { useSession } from 'next-auth/react';
+import { Box, Container, Group, Paper } from '@mantine/core';
 import { AppLayout } from 'components';
-import { useLogout } from 'hooks';
+import { ProfileCard } from 'features/profile';
 
 const ProfilePage = () => {
-  const { data: session, status } = useSession();
-
-  const logout = useLogout();
-
   return (
     <AppLayout>
-      {status === 'loading' && <Title>Loading Profile Page...</Title>}
-      {session && (
-        <>
-          <Title mb="xs">Welcome {session.user?.name}!</Title>
-          <Text mb="md">Your user id: {session.user?.id}</Text>
-          <Text mb="md">Your access token: {session.accessToken}</Text>
-          <Button onClick={logout} size="md">
-            Logout
-          </Button>
-        </>
-      )}
+      <Container size="lg">
+        <Box mb="xl">
+          <ProfileCard />
+        </Box>
+        <Group grow align="flex-start" spacing="xl">
+          <Box>
+            <Paper p="xl">Top Tracks</Paper>
+          </Box>
+          <Box>
+            <Paper p="xl">Top Artists</Paper>
+          </Box>
+        </Group>
+      </Container>
     </AppLayout>
   );
 };
