@@ -4,11 +4,15 @@ import Image from 'next/image';
 import { useSession } from 'next-auth/react';
 import { IconLogout, IconUserCircle } from '@tabler/icons';
 import { useLogout } from 'hooks';
+import { useRouter } from 'next/router';
+import { PageRoutes } from 'config/constants';
 
 const AVATAR_SIZE = 40;
 
 const UserMenu = () => {
   const { data: session, status } = useSession();
+
+  const router = useRouter();
 
   const logout = useLogout();
 
@@ -62,7 +66,12 @@ const UserMenu = () => {
         </UnstyledButton>
       </Menu.Target>
       <Menu.Dropdown>
-        <Menu.Item icon={<IconUserCircle size={20} />}>Profile</Menu.Item>
+        <Menu.Item
+          icon={<IconUserCircle size={20} />}
+          onClick={() => router.push(PageRoutes.Profile)}
+        >
+          Profile
+        </Menu.Item>
         <Menu.Item icon={<IconLogout size={20} />} onClick={logout}>
           Logout
         </Menu.Item>
