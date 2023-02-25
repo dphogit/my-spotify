@@ -10,6 +10,21 @@ if (!spotifyClientId || !spotifyClientSecret) {
 }
 
 export const authOptions: NextAuthOptions = {
+  callbacks: {
+    jwt: ({ token, account }) => {
+      if (account) {
+        return { ...token, accessToken: account.access_token };
+      }
+      return token;
+    },
+    session: ({ session, token }) => {
+      return {
+        ...session,
+        accessToken: token.accessToken,
+        user: { ...session.user, id: token.sub },
+      };
+    },
+  },
   pages: {
     signIn: PageRoutes.Home,
   },
@@ -20,11 +35,15 @@ export const authOptions: NextAuthOptions = {
       authorization: {
         url: 'https://accounts.spotify.com/authorize',
         params: {
-          scope: 'user-read-private user-read-email user-top-read',
+          scope:
+            'user-read-private user-read-email user-top-read user-follow-read playlist-read-private',
         },
       },
     }),
   ],
+  session: {
+    strategy: 'jwt',
+  },
 };
 
 export default NextAuth(authOptions);

@@ -26,6 +26,16 @@ const JakartaSans = localFont({
       style: 'italic',
     },
     {
+      path: './fonts/PlusJakartaSans-Medium.woff2',
+      weight: '500',
+      style: 'normal',
+    },
+    {
+      path: './fonts/PlusJakartaSans-MediumItalic.woff2',
+      weight: '500',
+      style: 'italic',
+    },
+    {
       path: './fonts/PlusJakartaSans-Regular.woff2',
       weight: '400',
       style: 'normal',
@@ -62,7 +72,6 @@ const ThemeProvider = ({ children, colorScheme, toggleColorScheme }: ThemeProvid
       <MantineProvider
         theme={{
           colorScheme,
-          primaryShade: 6,
           fontFamily,
           headings: { fontFamily, fontWeight: 800 },
           globalStyles: (theme) => ({
@@ -89,6 +98,7 @@ const ThemeProvider = ({ children, colorScheme, toggleColorScheme }: ThemeProvid
               '#0e7131',
             ],
           },
+          primaryShade: 6,
           primaryColor: 'spotify',
         }}
         withGlobalStyles

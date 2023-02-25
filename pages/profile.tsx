@@ -1,25 +1,17 @@
-import { Button, Text, Title } from '@mantine/core';
-import { useSession } from 'next-auth/react';
+import { Container, Group } from '@mantine/core';
 import { AppLayout } from 'components';
-import { useLogout } from 'hooks';
+import { ProfileCard, TopArtistsCard, TopTracksCard } from 'features/profile';
 
 const ProfilePage = () => {
-  const { data: session, status } = useSession();
-
-  const logout = useLogout();
-
   return (
     <AppLayout>
-      {status === 'loading' && <Title>Loading Profile Page...</Title>}
-      {session && (
-        <>
-          <Title mb="xs">Welcome {session.user?.name}!</Title>
-          <Text mb="md">This is a protected route. You should land here after signing in.</Text>
-          <Button onClick={logout} size="md">
-            Logout
-          </Button>
-        </>
-      )}
+      <Container size="xl" my="xl">
+        <ProfileCard />
+        <Group grow align="flex-start" spacing="xl" mt="xl">
+          <TopArtistsCard />
+          <TopTracksCard />
+        </Group>
+      </Container>
     </AppLayout>
   );
 };
