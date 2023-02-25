@@ -1,5 +1,5 @@
 import React from 'react';
-import { AppShell, AppShellProps, Group, Header, Title } from '@mantine/core';
+import { AppShell, AppShellProps, Group, Header } from '@mantine/core';
 import { UserMenu } from './UserMenu';
 import { Logo } from '../Logo';
 
