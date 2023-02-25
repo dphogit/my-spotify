@@ -26,6 +26,16 @@ const JakartaSans = localFont({
       style: 'italic',
     },
     {
+      path: './fonts/PlusJakartaSans-Medium.woff2',
+      weight: '500',
+      style: 'normal',
+    },
+    {
+      path: './fonts/PlusJakartaSans-MediumItalic.woff2',
+      weight: '500',
+      style: 'italic',
+    },
+    {
       path: './fonts/PlusJakartaSans-Regular.woff2',
       weight: '400',
       style: 'normal',
