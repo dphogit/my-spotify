@@ -1,16 +1,10 @@
-import useSWR from 'swr';
-import { useSession } from 'next-auth/react';
-import SpotifyWebApi from 'spotify-web-api-js';
-import { SWRCacheKeys } from '../../../config/constants';
+import { SWRCacheKeys } from 'config/constants';
+import { useSpotifyApi } from 'hooks';
 
 const useGetMyPlaylists = () => {
-  const { data: session } = useSession();
-
-  return useSWR(session?.accessToken ? SWRCacheKeys.MyPlaylists : null, () => {
-    const spotify = new SpotifyWebApi();
-    const accessToken = session?.accessToken as string;
-    spotify.setAccessToken(accessToken);
-    return spotify.getUserPlaylists(undefined);
+  return useSpotifyApi<SpotifyApi.ListOfUsersPlaylistsResponse>({
+    cacheKey: SWRCacheKeys.MyPlaylists,
+    cb: ({ spotify }) => spotify.getUserPlaylists(undefined),
   });
 };
 
