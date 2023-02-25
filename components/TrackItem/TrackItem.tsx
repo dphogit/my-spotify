@@ -19,10 +19,10 @@ const TrackItem = ({ track }: TrackItemProps) => {
       <Group>
         <Image src={track.album.images[0].url} alt={track.album.name} height={50} width={50} />
         <Box sx={{ minWidth: 0 }}>
-          <Text color="white" fw="bold" fz="sm" truncate>
+          <Text color="white" fw={700} fz="sm" truncate mb={2}>
             {track.name}
           </Text>
-          <Text fz="xs" color="dimmed" fw={600} component="span" truncate>
+          <Text fz="xs" color="dimmed" fw={600} truncate>
             <span>{artistNamesCommaSeparated}</span>
             <span className={classes.cdot}>•</span>
             <span>{track.album.name}</span>

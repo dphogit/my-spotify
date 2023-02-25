@@ -1,4 +1,5 @@
 import { Paper, Stack, Title } from '@mantine/core';
+import { ArtistItem } from 'components';
 import { useGetMyTopArtists } from '../../api';
 
 const TopArtistsCard = () => {
@@ -9,8 +10,8 @@ const TopArtistsCard = () => {
       <Title order={2}>All Time Top Artists</Title>
       {data && (
         <Stack spacing={32} mt={32}>
-          {data.items.map((track) => (
-            <div key={track.id}>{track.name}</div>
+          {data.items.map((artist) => (
+            <ArtistItem key={artist.id} artist={artist} />
           ))}
         </Stack>
       )}
