@@ -1,7 +1,7 @@
 import { Badge, Box, Group, Paper, Skeleton, Stack, Title } from '@mantine/core';
 import Image from 'next/image';
 import { Stat } from 'components';
-import { useGetFollowedArtists, useGetMe, useGetMyPlaylists } from '../../hooks';
+import { useGetFollowedArtists, useGetMe, useGetMyPlaylists } from '../../api';
 import useStyles from './ProfileCard.styles';
 
 const IMG_SIZE = 180;
