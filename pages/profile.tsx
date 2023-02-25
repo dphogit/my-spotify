@@ -5,7 +5,7 @@ import { ProfileCard, TopArtistsCard, TopTracksCard } from 'features/profile';
 const ProfilePage = () => {
   return (
     <AppLayout>
-      <Container size="lg" mt="xl">
+      <Container size="xl" my="xl">
         <ProfileCard />
         <Group grow align="flex-start" spacing="xl" mt="xl">
           <TopArtistsCard />

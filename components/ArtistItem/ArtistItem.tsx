@@ -1,12 +1,13 @@
 import Image from 'next/image';
 import { Group, Text } from '@mantine/core';
-import ArtistObjectFull = SpotifyApi.ArtistObjectFull;
 import { capitalizePhrase } from 'utils/strings';
+import ArtistObjectFull = SpotifyApi.ArtistObjectFull;
 
 interface ArtistItemProps {
   artist: ArtistObjectFull;
 }
 
+// FIXME Handle overflow states
 const ArtistItem = ({ artist }: ArtistItemProps) => {
   const firstThreeGenresCommaSeparated =
     artist.genres.length > 0
