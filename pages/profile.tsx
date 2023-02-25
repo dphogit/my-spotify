@@ -8,12 +8,12 @@ const ProfilePage = () => {
       <Container size="lg" mt="xl">
         <ProfileCard />
         <Group grow align="flex-start" spacing="xl" mt="xl">
-          <TopTracksCard />
           <Box>
             <Paper p="xl" shadow="xs">
               Top Artists
             </Paper>
           </Box>
+          <TopTracksCard />
         </Group>
       </Container>
     </AppLayout>

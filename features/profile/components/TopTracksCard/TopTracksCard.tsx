@@ -1,16 +1,19 @@
-import { Box, Paper, Stack, Title } from '@mantine/core';
-import useGetMyTopTracks from '../../api/useGetMyTopTracks';
+import { Paper, Stack, Title } from '@mantine/core';
+import { TrackItem } from 'components';
+import { useGetMyTopTracks } from '../../api';
 
 const TopTracksCard = () => {
   const { data } = useGetMyTopTracks();
 
   return (
-    <Paper p="xl" shadow="xs">
-      <Title order={2}>Top Tracks</Title>
+    <Paper p={32} shadow="xs">
+      <Title order={2} size="h3">
+        All Time Top Tracks
+      </Title>
       {data && (
-        <Stack spacing="md" mt="md">
+        <Stack spacing={32} mt={32}>
           {data.items.map((track) => (
-            <Box key={track.id}>{track.name}</Box>
+            <TrackItem key={track.id} track={track} />
           ))}
         </Stack>
       )}
