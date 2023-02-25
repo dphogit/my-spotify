@@ -1,5 +1,5 @@
 import { useSpotifyApi } from 'hooks';
-import { SWRCacheKeys } from '../../../config/constants';
+import { SWRCacheKeys } from 'config/constants';
 import UsersTopTracksResponse = SpotifyApi.UsersTopTracksResponse;
 
 const useGetMyTopTracks = () => {

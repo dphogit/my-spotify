@@ -8,6 +8,7 @@ interface TrackItemProps {
   track: TrackObjectFull;
 }
 
+// FIXME Handle overflow states
 const TrackItem = ({ track }: TrackItemProps) => {
   const { classes } = useStyles();
 
@@ -17,8 +18,8 @@ const TrackItem = ({ track }: TrackItemProps) => {
     <Group key={track.id} position="apart">
       <Group>
         <Image src={track.album.images[0].url} alt={track.album.name} height={50} width={50} />
-        <Box>
-          <Text color="white" truncate>
+        <Box sx={{ minWidth: 0 }}>
+          <Text color="white" fw="bold" fz="sm" truncate>
             {track.name}
           </Text>
           <Text fz="xs" color="dimmed" fw={600} component="span" truncate>

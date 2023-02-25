@@ -1,6 +1,6 @@
-import { Box, Container, Group, Paper } from '@mantine/core';
+import { Container, Group } from '@mantine/core';
 import { AppLayout } from 'components';
-import { ProfileCard, TopTracksCard } from 'features/profile';
+import { ProfileCard, TopArtistsCard, TopTracksCard } from 'features/profile';
 
 const ProfilePage = () => {
   return (
@@ -8,11 +8,7 @@ const ProfilePage = () => {
       <Container size="lg" mt="xl">
         <ProfileCard />
         <Group grow align="flex-start" spacing="xl" mt="xl">
-          <Box>
-            <Paper p="xl" shadow="xs">
-              Top Artists
-            </Paper>
-          </Box>
+          <TopArtistsCard />
           <TopTracksCard />
         </Group>
       </Container>
