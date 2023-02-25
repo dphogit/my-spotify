@@ -1,21 +1,21 @@
 import { Paper, Stack, Title } from '@mantine/core';
 import { TrackItem } from 'components';
 import { useGetMyTopTracks } from '../../api';
+import { LoadingGroup } from '../LoadingGroup';
 
-// TODO Loading state
 const TopTracksCard = () => {
-  const { data } = useGetMyTopTracks();
+  const { data, isLoading } = useGetMyTopTracks();
 
   return (
     <Paper p={32} shadow="xs">
       <Title order={2}>All Time Top Tracks</Title>
-      {data && (
-        <Stack spacing={32} mt={32}>
-          {data.items.map((track) => (
-            <TrackItem key={track.id} track={track} />
-          ))}
-        </Stack>
-      )}
+      <Stack spacing={32} mt={32}>
+        {isLoading ? (
+          <LoadingGroup />
+        ) : (
+          data && data.items.map((track) => <TrackItem key={track.id} track={track} />)
+        )}
+      </Stack>
     </Paper>
   );
 };
