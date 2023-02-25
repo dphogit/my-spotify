@@ -7,4 +7,6 @@ export const enum SWRCacheKeys {
   FollowedArtists = 'followed-artists',
   Me = 'me',
   MyPlaylists = 'my-playlists',
+  MyTopArtists = 'my-top-artists',
+  MyTopTracks = 'my-top-tracks',
 }

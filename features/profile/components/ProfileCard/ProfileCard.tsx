@@ -16,7 +16,7 @@ const ProfileCard = () => {
   const isLoading = isMeLoading || isFollowedArtistsLoading || isPlaylistsLoading;
 
   return (
-    <Paper p="xl">
+    <Paper p="xl" shadow="xs">
       <Group spacing="xl" position="apart">
         <Box>
           {isLoading ? (
