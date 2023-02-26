@@ -1,39 +1,78 @@
-# Mantine Next Template
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="/public/assets/logo-dark-4x.png">
+  <img alt="Visualize My Spotify Logo" src="/public/assets/logo-light-4x.png">
+</picture>
 
-Get started with Mantine + Next with just a few button clicks.
-Click `Use this template` button at the header of repository or [follow this link](https://github.com/mantinedev/mantine-next-template/generate) and
-create new repository with `@mantine` packages. Note that you have to be logged in to GitHub to generate template.
+---
 
-## Features
+# Visualize My Spotify
 
-This template comes with several essential features:
+## 🚀 Description
 
-- Server side rendering setup for Mantine
-- Color scheme is stored in cookie to avoid color scheme mismatch after hydration
-- Storybook with color scheme toggle
-- Jest with react testing library
-- ESLint setup with [eslint-config-mantine](https://github.com/mantinedev/eslint-config-mantine)
+A [Next.js](https://nextjs.org/) web application that helps visualize your spotify profile and behaviour using:
+- [Spotify Web Api](https://developer.spotify.com/documentation/web-api/) for spotify data
+- [Mantine](https://mantine.dev/) for components and UI
+- [NextAuth](https://next-auth.js.org/) for authentication
 
-## npm scripts
+![Demo](docs/screenshots/demo.png)
 
-### Build and dev scripts
+## 💻 Getting Started
 
-- `dev` – start dev server
-- `build` – bundle application for production
-- `export` – exports static website to `out` folder
-- `analyze` – analyzes application bundle with [@next/bundle-analyzer](https://www.npmjs.com/package/@next/bundle-analyzer)
+### Spotify
 
-### Testing scripts
+Create a spotify account if you don't have one then access the [developer dashboard](https://developer.spotify.com/dashboard/login). Register a new application and the following redirect url: `http://localhost:3000/api/auth/callback/spotify`. If you are using a different port from `3000` then update the redirect url accordingly. You will need the `Client ID` and `Client Secret` for the next step.
 
-- `typecheck` – checks TypeScript types
-- `lint` – runs ESLint
-- `prettier:check` – checks files with Prettier
-- `jest` – runs jest tests
-- `jest:watch` – starts jest watch
-- `test` – runs `jest`, `prettier:check`, `lint` and `typecheck` scripts
+### Installation And Setup
 
-### Other scripts
+#### Install dependencies
 
-- `storybook` – starts storybook dev server
-- `storybook:build` – build production storybook bundle to `storybook-static`
-- `prettier:write` – formats all files with Prettier
+```bash
+yarn install
+```
+#### Environment Variables
+
+Create a `.env.local` file in the root of the project and add the environment variables:
+
+```bash
+SPOTIFY_CLIENT_ID=<your-spotify-client-id>
+SPOTIFY_CLIENT_SECRET=<your-spotify-client-secret>
+NEXTAUTH_SECRET=<your-nextauth-secret>
+
+# The NEXTAUTH_URL environment variable is only needed for deployment, it may be useful to set it locally for previewing git branches on Vercel.
+# https://next-auth.js.org/getting-started/example#deploying-to-production
+NEXTAUTH_URL=http://localhost:3000
+```
+Refer to the `.env.sample` file as a reference.
+
+#### Run the development server on `localhost:3000`
+
+```bash
+yarn dev
+```
+
+### Usage
+
+Upon running the development server with `yarn dev` you will be able to access the application on `localhost:3000`. Click on the `Login with Spotify` button to authenticate with your spotify account. The spotify web api authorizes using OAuth which NextAuth handles for you with a Spotify provider.
+
+This application is gated behind authentication. Upon your first time logging in (or when authorization scopes change) you will be requested to give permission to authorize the application to access your spotify data. Once authenticated/authorized you will be able to use the application.
+
+More details will be added to the [docs](docs) when required, but these links should be helpful for now to understand how authentication/authorization works in this application: 
+- [NextAuth Documentation](https://next-auth.js.org/)
+  - [Explanation On OAuth Providers](https://next-auth.js.org/configuration/providers/oauth)
+  - [Spotify Provider](https://next-auth.js.org/providers/spotify)
+- [Spotify Web Api Documentation](https://developer.spotify.com/documentation/web-api/)
+  - [Authorization Guide](https://developer.spotify.com/documentation/general/guides/authorization/)
+  - [Authorization Scopes](https://developer.spotify.com/documentation/general/guides/scopes/)
+  - [Web Api Reference](https://developer.spotify.com/documentation/web-api/reference/)
+
+## 📕 Documentation
+
+The practices and guidelines for this repository are inspired by [Bulletproof Next.js](https://github.com/alan2207/bulletproof-react) with some minor adjustments due to the project being a Next.js application instead of a React application.
+
+The [docs](docs) folder contains some useful information and tutorials/explanations on how some things work in this application/codebase. The following links are a good place to start:
+- [Project Structure](docs/project-structure.md)
+- [Interacting With The Spotify Web API](docs/spoitfy-api-interaction.md)
+
+## 🚀 Deployment
+
+Deployment is handled by [Vercel](https://vercel.com/). The `master` branch is the production branch and `staging` branch is to mimic production. Branches should be merged into staging to see if it works in a production-like environment before merging into `master`.
