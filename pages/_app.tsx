@@ -22,7 +22,7 @@ export default function App(props: AppProps & { colorScheme: ColorScheme }) {
       <Head>
         <title>My Spotify</title>
         <meta name="viewport" content="minimum-scale=1, initial-scale=1, width=device-width" />
-        <link rel="shortcut icon" href="/favicon.svg" />
+        <link rel="shortcut icon" href="/assets/icon.png" />
       </Head>
       <SessionProvider session={pageProps.session}>
         <ThemeProvider colorScheme={colorScheme} toggleColorScheme={toggleColorScheme}>
