@@ -50,7 +50,7 @@ yarn dev
 
 Upon running the development server with `yarn dev` you will be able to access the application on `localhost:3000`. Click on the `Login with Spotify` button to authenticate with your spotify account. The spotify web api authorizes using OAuth which NextAuth handles for you with a Spotify provider.
 
-This application is gated behind authentication. Upon your first time logging in (or when authorization scopes change). Once authenticated you will be able to use the application.
+This application is gated behind authentication. Upon your first time logging in (or when authorization scopes change) you will be requested to give permission to authorize the application to access your spotify data. Once authenticated/authorized you will be able to use the application.
 
 More details will be added to the [docs](docs) when required, but these links should be helpful for now to understand how authentication/authorization works in this application: 
 - [NextAuth Documentation](https://next-auth.js.org/)
