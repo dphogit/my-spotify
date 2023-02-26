@@ -37,6 +37,10 @@ Create a `.env.local` file in the root of the project and add the environment va
 SPOTIFY_CLIENT_ID=<your-spotify-client-id>
 SPOTIFY_CLIENT_SECRET=<your-spotify-client-secret>
 NEXTAUTH_SECRET=<your-nextauth-secret>
+
+# The NEXTAUTH_URL environment variable is only needed for deployment, it may be useful to set it locally for previewing git branches on Vercel.
+# https://next-auth.js.org/getting-started/example#deploying-to-production
+NEXTAUTH_URL=http://localhost:3000
 ```
 Refer to the `.env.sample` file as a reference.
 
@@ -68,3 +72,7 @@ The practices and guidelines for this repository are inspired by [Bulletproof Ne
 The [docs](docs) folder contains some useful information and tutorials/explanations on how some things work in this application/codebase. The following links are a good place to start:
 - [Project Structure](docs/project-structure.md)
 - [Interacting With The Spotify Web API](docs/spoitfy-api-interaction.md)
+
+## 🚀 Deployment
+
+Deployment is handled by [Vercel](https://vercel.com/). The `master` branch is the production branch and `staging` branch is to mimic production. Branches should be merged into staging to see if it works in a production-like environment before merging into `master`.
