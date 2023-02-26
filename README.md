@@ -1,3 +1,9 @@
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="/public/assets/logo-dark-4x.png">
+  <img alt="Visualize My Spotify Logo" src="/public/assets/logo-light-4x.png">
+</picture>
+
+---
 
 # Visualize My Spotify
 
