@@ -11,12 +11,6 @@ module.exports = withBundleAnalyzer({
     remotePatterns: [
       {
         protocol: 'https',
-        hostname: 'scontent.fmaa10-1.fna.fbcdn.net',
-        port: '',
-        pathname: '**',
-      },
-      {
-        protocol: 'https',
         hostname: 'i.scdn.co',
         port: '',
         pathname: '**',
