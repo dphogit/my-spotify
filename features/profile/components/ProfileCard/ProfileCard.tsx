@@ -1,5 +1,4 @@
-import { Badge, Box, Group, Paper, Skeleton, Stack, Title } from '@mantine/core';
-import Image from 'next/image';
+import { Avatar, Badge, Box, Group, Paper, Skeleton, Stack, Title } from '@mantine/core';
 import { Stat } from 'components';
 import { useGetFollowedArtists, useGetMe, useGetMyPlaylists } from '../../api';
 import useStyles from './ProfileCard.styles';
@@ -23,13 +22,14 @@ const ProfileCard = () => {
             <Skeleton circle width={IMG_SIZE} height={IMG_SIZE} />
           ) : (
             profile?.images && (
-              <Image
+              <Avatar
                 src={profile.images[0].url}
+                size={IMG_SIZE}
                 alt={`${profile.display_name || 'User'} profile image`}
-                width={IMG_SIZE}
-                height={IMG_SIZE}
-                style={{ borderRadius: '50%' }}
-              />
+                radius={IMG_SIZE / 2}
+              >
+                {profile.display_name?.charAt(0)}
+              </Avatar>
             )
           )}
         </Box>
