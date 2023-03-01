@@ -1,6 +1,5 @@
 import React from 'react';
 import { Avatar, Box, Group, Menu, Skeleton, Text, UnstyledButton } from '@mantine/core';
-import Image from 'next/image';
 import { useSession } from 'next-auth/react';
 import { IconLogout, IconUserCircle } from '@tabler/icons';
 import { useLogout } from 'hooks';
@@ -29,15 +28,14 @@ const UserMenu = () => {
     if (session?.user?.image) {
       return (
         <>
-          <Image
+          <Avatar
             src={session.user.image}
             alt={`${session.user.name || 'User'} Profile Picture`}
-            width={AVATAR_SIZE}
-            height={AVATAR_SIZE}
-            style={{
-              borderRadius: '50%',
-            }}
-          />
+            size={AVATAR_SIZE}
+            radius="xl"
+          >
+            {session.user.name?.charAt(0)}
+          </Avatar>
           <Box>
             <Text fw={600}>{session.user.name}</Text>
             <Text color="dimmed" size="xs">
