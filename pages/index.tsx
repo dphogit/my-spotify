@@ -1,11 +1,8 @@
 import { Anchor, Box, Button, Center, Stack, Text, Title } from '@mantine/core';
-import { signIn } from 'next-auth/react';
-import { PageRoutes } from 'config/constants';
+import { useLoginWithSpotify } from 'hooks';
 
 export default function HomePage() {
-  const loginWithSpotify = async () => {
-    await signIn('spotify', { callbackUrl: PageRoutes.Profile });
-  };
+  const loginWithSpotify = useLoginWithSpotify();
 
   return (
     <Center h="90vh" pos="relative">

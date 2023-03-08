@@ -63,7 +63,7 @@ export const authOptions: NextAuthOptions = {
       }
 
       // Check for expired access token
-      if (token.expiresAt && token.expiresAt >= Date.now()) {
+      if (token.expiresAt && Date.now() > token.expiresAt) {
         try {
           return refreshAccessToken(token);
         } catch (error) {
@@ -82,6 +82,7 @@ export const authOptions: NextAuthOptions = {
         ...session,
         accessToken: token.accessToken,
         user: { ...session.user, id: token.sub },
+        error: token.error,
       };
     },
   },
