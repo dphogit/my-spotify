@@ -1,9 +1,9 @@
 import { useEffect } from 'react';
 import { useRouter } from 'next/router';
 import { useSession } from 'next-auth/react';
-import { showNotification } from '@mantine/notifications';
 import useLoginWithSpotify from './useLoginWithSpotify';
 import { PageRoutes } from '../config/constants';
+import useErrorNotification from './useErrorNotification';
 
 const useForceSignInOnRefreshTokenError = () => {
   const { data: session } = useSession();
@@ -12,19 +12,17 @@ const useForceSignInOnRefreshTokenError = () => {
 
   const loginWithSpotify = useLoginWithSpotify();
 
+  const errorNotification = useErrorNotification();
+
   useEffect(() => {
     const tryForceLoginWithSpotify = async () => {
       try {
         console.error('RefreshAccessTokenError, attempting to force sign in');
         await loginWithSpotify(); // Force sign in to hopefully resolve error
       } catch (error) {
-        // console.error('Force sign in failed', error);
+        console.error('Force sign in failed', error);
         await router.push(PageRoutes.Home);
-        showNotification({
-          color: 'red',
-          title: 'Error',
-          message: 'There was an error authenticating, please try to log in again.',
-        });
+        errorNotification('There was an error authenticating, please try to log in again.');
       }
     };
 
