@@ -65,13 +65,14 @@ More details will be added to the [docs](docs) when required, but these links sh
   - [Authorization Scopes](https://developer.spotify.com/documentation/general/guides/scopes/)
   - [Web Api Reference](https://developer.spotify.com/documentation/web-api/reference/)
 
-## 📕 Documentation
+## 📕 Dev Documentation
 
-The practices and guidelines for this repository are inspired by [Bulletproof Next.js](https://github.com/alan2207/bulletproof-react) with some minor adjustments due to the project being a Next.js application instead of a React application.
+The practices and guidelines for this repository are inspired by [Bulletproof React](https://github.com/alan2207/bulletproof-react) with some minor adjustments due to the project being a Next.js application instead of a React application.
 
 The [docs](docs) folder contains some useful information and tutorials/explanations on how some things work in this application/codebase. The following links are a good place to start:
-- [Project Structure](docs/project-structure.md)
-- [Interacting With The Spotify Web API](docs/spoitfy-api-interaction.md)
+- [🏢 Project Structure](docs/project-structure.md)
+- [🤘 Interacting With The Spotify Web API](docs/spoitfy-api-interaction.md)
+- [🧪 Testing](docs/testing.md)
 
 ## 🚀 Deployment
 
