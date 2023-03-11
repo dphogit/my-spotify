@@ -9,7 +9,7 @@ export default function HomePage() {
   const handleLogin = async () => {
     try {
       await loginWithSpotify();
-    } catch (error) {
+    } catch {
       errorNotification('Failed to login with Spotify');
     }
   };
