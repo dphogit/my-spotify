@@ -1,5 +1,6 @@
 import React from 'react';
 import { AppShell, AppShellProps, Group, Header } from '@mantine/core';
+import { useForceSignInOnRefreshTokenError } from 'hooks';
 import { UserMenu } from './UserMenu';
 import { Logo } from '../Logo';
 
@@ -8,6 +9,9 @@ interface AppLayoutProps {
 }
 
 const AppLayout = ({ children, ...props }: AppLayoutProps & AppShellProps) => {
+  // Intended to be the root layout for all authenticated pages
+  useForceSignInOnRefreshTokenError();
+
   return (
     <AppShell
       padding={props.padding || 'xl'}

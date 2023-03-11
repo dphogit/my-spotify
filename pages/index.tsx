@@ -1,17 +1,24 @@
 import { Anchor, Box, Button, Center, Stack, Text, Title } from '@mantine/core';
-import { signIn } from 'next-auth/react';
-import { PageRoutes } from 'config/constants';
+import { useErrorNotification, useLoginWithSpotify } from 'hooks';
 
 export default function HomePage() {
-  const loginWithSpotify = async () => {
-    await signIn('spotify', { callbackUrl: PageRoutes.Profile });
+  const loginWithSpotify = useLoginWithSpotify();
+
+  const errorNotification = useErrorNotification();
+
+  const handleLogin = async () => {
+    try {
+      await loginWithSpotify();
+    } catch {
+      errorNotification('Failed to login with Spotify');
+    }
   };
 
   return (
     <Center h="90vh" pos="relative">
       <Stack spacing="xl" align="center">
         <Title ta="center">Visualize My Spotify</Title>
-        <Button size="xl" radius="xl" onClick={loginWithSpotify}>
+        <Button size="xl" radius="xl" onClick={handleLogin}>
           Login With Spotify
         </Button>
       </Stack>
