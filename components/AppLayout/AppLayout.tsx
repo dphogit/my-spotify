@@ -3,6 +3,7 @@ import { AppShell, AppShellProps, Group, Header } from '@mantine/core';
 import { useForceSignInOnRefreshTokenError } from 'hooks';
 import { UserMenu } from './UserMenu';
 import { Logo } from '../Logo';
+import { Sidebar } from './Sidebar';
 
 interface AppLayoutProps {
   children: React.ReactNode;
@@ -28,12 +29,7 @@ const AppLayout = ({ children, ...props }: AppLayoutProps & AppShellProps) => {
           </Group>
         </Header>
       }
-      // TODO Add this back in when more pages are added
-      // navbar={
-      //   <Navbar width={{ base: 260 }} p="xl">
-      //     <Navbar.Section grow>Links</Navbar.Section>
-      //   </Navbar>
-      // }
+      navbar={<Sidebar />}
     >
       {children}
     </AppShell>

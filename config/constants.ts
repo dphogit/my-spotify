@@ -1,6 +1,12 @@
 export const enum PageRoutes {
   Home = '/',
   Profile = '/profile',
+  TopArtists = '/top-artists',
+  TopTracks = '/top-tracks',
+}
+
+export const enum ExternalRoutes {
+  GitHub = 'https://github.com/dphogit/my-spotify',
 }
 
 export const enum SWRCacheKeys {
